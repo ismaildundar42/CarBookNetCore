@@ -4,12 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CarBookNetCore.Domain.Entities
+namespace CarBookNetCore.Application.CQRS.Commands.BrandCommand
 {
-    public class Brand
+    public class CreateBrandCommand
     {
-        public int BrandId { get; set; }
         public string Name { get; set; }
-        public List<Car> Cars { get; set; }
     }
 }

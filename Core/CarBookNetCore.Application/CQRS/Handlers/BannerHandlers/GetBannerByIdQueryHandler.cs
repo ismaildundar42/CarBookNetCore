@@ -1,4 +1,4 @@
-﻿using CarBookNetCore.Application.CQRS.Queries;
+﻿using CarBookNetCore.Application.CQRS.Queries.BannerQueries;
 using CarBookNetCore.Application.CQRS.Results.BannerResults;
 using CarBookNetCore.Application.Interfaces;
 using CarBookNetCore.Domain.Entities;

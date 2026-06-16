@@ -1,6 +1,7 @@
 ﻿using CarBookNetCore.Application.CQRS.Commands.BannerCommands;
 using CarBookNetCore.Application.CQRS.Handlers.BannerHandlers;
 using CarBookNetCore.Application.CQRS.Queries;
+using CarBookNetCore.Application.CQRS.Queries.BannerQueries;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Identity.Client;

@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CarBookNetCore.Application.CQRS.Queries
+namespace CarBookNetCore.Application.CQRS.Queries.CarQueries
 {
-    public class GetAboutByIdQuery
+    public class GetCarByIdQuery
     {
-        public GetAboutByIdQuery(int id)
+        public GetCarByIdQuery(int id)
         {
             Id = id;
         }

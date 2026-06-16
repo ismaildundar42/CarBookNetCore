@@ -1,4 +1,4 @@
-﻿using CarBookNetCore.Application.CQRS.Queries;
+﻿using CarBookNetCore.Application.CQRS.Queries.AboutQueries;
 using CarBookNetCore.Application.CQRS.Results.AboutResults;
 using CarBookNetCore.Application.Interfaces;
 using CarBookNetCore.Domain.Entities;

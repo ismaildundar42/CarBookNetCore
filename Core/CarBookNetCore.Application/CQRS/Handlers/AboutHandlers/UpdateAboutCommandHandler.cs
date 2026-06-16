@@ -1,4 +1,4 @@
-﻿using CarBookNetCore.Application.CQRS.Commands.AboutCommands;
+using CarBookNetCore.Application.CQRS.Commands.AboutCommands;
 using CarBookNetCore.Application.Interfaces;
 using CarBookNetCore.Domain.Entities;
 using System;
@@ -21,7 +21,7 @@ namespace CarBookNetCore.Application.CQRS.Handlers.AboutHandlers
         {
             var values = await _repository.GetByIdAsync(command.AboutId);
             values.Description = command.Description;
-            values.Title = command.ImageUrl;
+            values.Title = command.Title;
             values.ImageUrl = command.ImageUrl;
             await _repository.UpdateAsync(values);
         }
