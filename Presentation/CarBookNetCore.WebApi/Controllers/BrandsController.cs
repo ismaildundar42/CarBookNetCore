@@ -1,6 +1,6 @@
-﻿using CarBookNetCore.Application.CQRS.Commands.BrandCommand;
-using CarBookNetCore.Application.CQRS.Handlers.BrandHandlers;
-using CarBookNetCore.Application.CQRS.Queries.BrandQueries;
+﻿using CarBookNetCore.Application.Features.CQRS.Commands.BrandCommands;
+using CarBookNetCore.Application.Features.CQRS.Handlers.BrandHandlers;
+using CarBookNetCore.Application.Features.CQRS.Queries.BrandQueries;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 

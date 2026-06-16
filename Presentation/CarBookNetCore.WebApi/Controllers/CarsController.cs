@@ -1,6 +1,6 @@
-﻿using CarBookNetCore.Application.CQRS.Commands.CarCommands;
-using CarBookNetCore.Application.CQRS.Handlers.CarHandlers;
-using CarBookNetCore.Application.CQRS.Queries.CarQueries;
+﻿using CarBookNetCore.Application.Features.CQRS.Commands.CarCommands;
+using CarBookNetCore.Application.Features.CQRS.Handlers.CarHandlers;
+using CarBookNetCore.Application.Features.CQRS.Queries.CarQueries;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 

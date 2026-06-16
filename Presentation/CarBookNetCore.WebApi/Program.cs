@@ -1,9 +1,9 @@
-using CarBookNetCore.Application.CQRS.Handlers.AboutHandlers;
-using CarBookNetCore.Application.CQRS.Handlers.BannerHandlers;
-using CarBookNetCore.Application.CQRS.Handlers.BrandHandlers;
-using CarBookNetCore.Application.CQRS.Handlers.CarHandlers;
-using CarBookNetCore.Application.Interfaces;
-using CarBookNetCore.Application.Interfaces.CarInterfaces;
+using CarBookNetCore.Application.Features.CQRS.Handlers.AboutHandlers;
+using CarBookNetCore.Application.Features.CQRS.Handlers.BannerHandlers;
+using CarBookNetCore.Application.Features.CQRS.Handlers.BrandHandlers;
+using CarBookNetCore.Application.Features.CQRS.Handlers.CarHandlers;
+using CarBookNetCore.Application.Features.Interfaces;
+using CarBookNetCore.Application.Features.Interfaces.CarInterfaces;
 using CarBookNetCore.Persistence.Context;
 using CarBookNetCore.Persistence.Repositories;
 using CarBookNetCore.Persistence.Repositories.CarRepositories;
