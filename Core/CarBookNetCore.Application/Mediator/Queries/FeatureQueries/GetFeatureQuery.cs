@@ -1,4 +1,4 @@
-﻿using CarBookNetCore.Application.Mediator.Results.FeaturesResults;
+using CarBookNetCore.Application.Mediator.Results.FeatureResults;
 using MediatR;
 using System;
 using System.Collections.Generic;

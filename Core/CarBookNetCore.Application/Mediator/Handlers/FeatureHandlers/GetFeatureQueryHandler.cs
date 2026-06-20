@@ -1,6 +1,6 @@
-﻿using CarBookNetCore.Application.Features.Interfaces;
+using CarBookNetCore.Application.Features.Interfaces;
 using CarBookNetCore.Application.Mediator.Queries.FeatureQueries;
-using CarBookNetCore.Application.Mediator.Results.FeaturesResults;
+using CarBookNetCore.Application.Mediator.Results.FeatureResults;
 using CarBookNetCore.Domain.Entities;
 using MediatR;
 using System;

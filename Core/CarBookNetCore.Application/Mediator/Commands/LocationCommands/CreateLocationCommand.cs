@@ -1,14 +1,14 @@
+﻿using MediatR;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CarBookNetCore.Application.Mediator.Results.FeatureResults
+namespace CarBookNetCore.Application.Mediator.Commands.LocationCommands
 {
-    public class GetFeatureQueryResult
+    public class CreateLocationCommand : IRequest
     {
-        public int FeatureId { get; set; }
         public string Name { get; set; }
     }
 }
