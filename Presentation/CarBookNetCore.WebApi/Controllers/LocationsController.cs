@@ -1,5 +1,5 @@
-﻿using CarBookNetCore.Application.Mediator.Commands.LocationCommands;
-using CarBookNetCore.Application.Mediator.Queries.LocationQueries;
+using CarBookNetCore.Application.Features.Mediator.Commands.LocationCommands;
+using CarBookNetCore.Application.Features.Mediator.Queries.LocationQueries;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;

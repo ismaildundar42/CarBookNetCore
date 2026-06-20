@@ -1,5 +1,5 @@
-﻿using CarBookNetCore.Application.Mediator.Commands.FooterAddressCommand;
-using CarBookNetCore.Application.Mediator.Queries.FooterAddressQueries;
+using CarBookNetCore.Application.Features.Mediator.Commands.FooterAddressCommand;
+using CarBookNetCore.Application.Features.Mediator.Queries.FooterAddressQueries;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;

@@ -1,5 +1,5 @@
-﻿using CarBookNetCore.Application.Mediator.Commands.PricingCommands;
-using CarBookNetCore.Application.Mediator.Queries.PricingQueries;
+using CarBookNetCore.Application.Features.Mediator.Commands.PricingCommands;
+using CarBookNetCore.Application.Features.Mediator.Queries.PricingQueries;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;

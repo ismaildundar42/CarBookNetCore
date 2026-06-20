@@ -1,6 +1,6 @@
-﻿using CarBookNetCore.Application.Mediator.Commands.ServiceCommands;
-using CarBookNetCore.Application.Mediator.Queries.ServiceQueries;
-using CarBookNetCore.Application.Mediator.Queries.SocialMediaQueries;
+using CarBookNetCore.Application.Features.Mediator.Commands.ServiceCommands;
+using CarBookNetCore.Application.Features.Mediator.Queries.ServiceQueries;
+using CarBookNetCore.Application.Features.Mediator.Queries.SocialMediaQueries;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
