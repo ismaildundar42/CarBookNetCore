@@ -1,4 +1,4 @@
-﻿using CarBookNetCore.Application.Features.CQRS.Queries.BrandQueries;
+using CarBookNetCore.Application.Features.CQRS.Queries.BrandQueries;
 using CarBookNetCore.Application.Features.CQRS.Queries.CategoryQueries;
 using CarBookNetCore.Application.Features.CQRS.Results.BrandResults;
 using CarBookNetCore.Application.Features.CQRS.Results.CategoryResults;
@@ -20,10 +20,14 @@ namespace CarBookNetCore.Application.Features.CQRS.Handlers.CategoryHandlers
         {
             _categoryRepository = categoryRepository;
         }
-        public async Task<GetCategoryQueryResult> Handle(GetCategoryByIdQuery query)
+        public async Task<GetCategoryByIdQueryResult> Handle(GetCategoryByIdQuery query)
         {
             var values = await _categoryRepository.GetByIdAsync(query.Id);
-            return new GetCategoryQueryResult
+            if (values == null)
+            {
+                return null;
+            }
+            return new GetCategoryByIdQueryResult
             {
                 CategoryId = values.CategoryId,
                 Name = values.Name

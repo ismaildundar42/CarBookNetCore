@@ -21,6 +21,10 @@ namespace CarBookNetCore.Application.Features.CQRS.Handlers.CarHandlers
         public async Task<GetCarByIdQueryResult> Handle(GetCarByIdQuery query)
         {
             var value = await _repository.GetByIdAsync(query.Id);
+            if (value == null)
+            {
+                return null;
+            }
             return new GetCarByIdQueryResult
             {
                 BigImageUrl = value.BigImageUrl,

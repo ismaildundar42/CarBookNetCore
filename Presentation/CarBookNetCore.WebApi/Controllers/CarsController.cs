@@ -16,8 +16,9 @@ namespace CarBookNetCore.WebApi.Controllers
         private readonly RemoveCarCommandHandler _removeCarCommandHandler;
         private readonly UpdateCarCommandHandler _updateCarCommandHandler;
         private readonly GetCarWithBrandQueryHandler _getCarWithBrandQueryHandler;
+        private readonly GetLast5CarWithBrandQueryHandler _getLast5CarWithBrandQueryHandler;
 
-        public CarsController(CreateCarCommandHandler createCarCommandHandler, GetCarByIdQueryHandler getCarByIdQueryHandler, GetCarQueryHandler getCarQueryHandler, RemoveCarCommandHandler removeCarCommandHandler, UpdateCarCommandHandler updateCarCommandHandler, GetCarWithBrandQueryHandler getCarWithBrandQueryHandler)
+        public CarsController(CreateCarCommandHandler createCarCommandHandler, GetCarByIdQueryHandler getCarByIdQueryHandler, GetCarQueryHandler getCarQueryHandler, RemoveCarCommandHandler removeCarCommandHandler, UpdateCarCommandHandler updateCarCommandHandler, GetCarWithBrandQueryHandler getCarWithBrandQueryHandler, GetLast5CarWithBrandQueryHandler getLast5CarWithBrandQueryHandler)
         {
             _createCarCommandHandler = createCarCommandHandler;
             _getCarByIdQueryHandler = getCarByIdQueryHandler;
@@ -25,6 +26,7 @@ namespace CarBookNetCore.WebApi.Controllers
             _removeCarCommandHandler = removeCarCommandHandler;
             _updateCarCommandHandler = updateCarCommandHandler;
             _getCarWithBrandQueryHandler = getCarWithBrandQueryHandler;
+            _getLast5CarWithBrandQueryHandler = getLast5CarWithBrandQueryHandler;
         }
 
         [HttpGet]
@@ -61,6 +63,12 @@ namespace CarBookNetCore.WebApi.Controllers
         public async Task<IActionResult> GetCarWithBrandAsync()
         {
             var value =  await _getCarWithBrandQueryHandler.Handle();
+            return Ok(value);
+        }
+        [HttpGet("GetLast5CarWithBrand")]
+        public async Task<IActionResult> GetLast5CarWithBrand()
+        {
+            var value = await _getLast5CarWithBrandQueryHandler.Handle();
             return Ok(value);
         }
     }

@@ -1,7 +1,5 @@
 using CarBookNetCore.Application.Features.CQRS.Results.CarResults;
-using CarBookNetCore.Application.Features.Interfaces;
 using CarBookNetCore.Application.Features.Interfaces.CarInterfaces;
-using CarBookNetCore.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,20 +8,20 @@ using System.Threading.Tasks;
 
 namespace CarBookNetCore.Application.Features.CQRS.Handlers.CarHandlers
 {
-    public class GetCarWithBrandQueryHandler
+    public class GetLast5CarWithBrandQueryHandler
     {
         private readonly ICarRepository _repository;
 
-        public GetCarWithBrandQueryHandler(ICarRepository repository)
+        public GetLast5CarWithBrandQueryHandler(ICarRepository repository)
         {
             _repository = repository;
         }
 
-        public Task<List<GetCarWithBrandQueryResult>> Handle()
+        public Task<List<GetLast5CarWithBrandQueryResult>> Handle()
         {
-            var values = _repository.GetCarsWithBrands();
+            var values = _repository.GetLast5CarWithBrands();
 
-            var result = values.Select(x => new GetCarWithBrandQueryResult
+            var result = values.Select(x => new GetLast5CarWithBrandQueryResult
             {
                 BrandName = x.Brand != null ? x.Brand.Name : "",
                 BigImageUrl = x.BigImageUrl,
