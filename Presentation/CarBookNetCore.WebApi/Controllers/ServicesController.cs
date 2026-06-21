@@ -1,6 +1,5 @@
 using CarBookNetCore.Application.Features.Mediator.Commands.ServiceCommands;
 using CarBookNetCore.Application.Features.Mediator.Queries.ServiceQueries;
-using CarBookNetCore.Application.Features.Mediator.Queries.SocialMediaQueries;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -20,7 +19,7 @@ namespace CarBookNetCore.WebApi.Controllers
         [HttpGet]
         public async Task<IActionResult> ServiceList()
         {
-            var values = await _mediator.Send(new GetSocialMediaQuery());
+            var values = await _mediator.Send(new GetServiceQuery());
             return Ok(values);
         }
         [HttpGet("id")]

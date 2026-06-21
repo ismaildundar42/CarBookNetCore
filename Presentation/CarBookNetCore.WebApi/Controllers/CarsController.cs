@@ -58,9 +58,9 @@ namespace CarBookNetCore.WebApi.Controllers
             return Ok("Car bilgisi başarılı bir şekilde güncellendi!");
         }
         [HttpGet("GetCarWithBrand")]
-        public IActionResult GetCarWithBrand()
+        public async Task<IActionResult> GetCarWithBrandAsync()
         {
-            var value =  _getCarWithBrandQueryHandler.Handle();
+            var value =  await _getCarWithBrandQueryHandler.Handle();
             return Ok(value);
         }
     }

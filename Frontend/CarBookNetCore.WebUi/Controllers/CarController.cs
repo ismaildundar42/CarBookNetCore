@@ -1,28 +1,27 @@
 ﻿using CarBookNetCore.Dtos.AboutDtos;
-using CarBookNetCore.Dtos.TestimonialDtos;
+using CarBookNetCore.Dtos.CarDtos;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-using System.Threading.Tasks;
 
-namespace CarBookNetCore.WebUi.ViewComponents.TestimonialViewComponents
+namespace CarBookNetCore.WebUi.Controllers
 {
-    public class _TestimonialComponentPartial : ViewComponent
+    public class CarController : Controller
     {
         private readonly IHttpClientFactory _httpClientFactory;
 
-        public _TestimonialComponentPartial(IHttpClientFactory httpClientFactory)
+        public CarController(IHttpClientFactory httpClientFactory)
         {
             _httpClientFactory = httpClientFactory;
         }
 
-        public async Task<IViewComponentResult> InvokeAsync()
+        public async Task<IActionResult> Index()
         {
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("https://localhost:7187/api/Testimonials");
+            var responseMessage = await client.GetAsync("https://localhost:7187/api/Cars/GetCarWithBrand");
             if(responseMessage.IsSuccessStatusCode)
             {
                 var jsonData = await responseMessage.Content.ReadAsStringAsync();
-                var values = JsonConvert.DeserializeObject<List<ResultTestimonialDto>>(jsonData);
+                var values = JsonConvert.DeserializeObject<List<ResultCarWithBrandDto>> (jsonData);
                 return View(values);
             }
             return View();
