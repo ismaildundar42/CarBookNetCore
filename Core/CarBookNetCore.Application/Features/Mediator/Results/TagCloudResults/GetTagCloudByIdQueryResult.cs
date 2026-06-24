@@ -1,0 +1,16 @@
+﻿using CarBookNetCore.Domain.Entities;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CarBookNetCore.Application.Features.Mediator.Results.TagCloudResults
+{
+    public class GetTagCloudByIdQueryResult
+    {
+        public int TagCloudeId { get; set; }
+        public string Title { get; set; }
+        public int BlogId { get; set; }
+    }
+}
