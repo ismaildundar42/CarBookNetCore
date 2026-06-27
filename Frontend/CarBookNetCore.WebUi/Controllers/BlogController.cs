@@ -34,6 +34,7 @@ namespace CarBookNetCore.WebUi.Controllers
             ViewBag.v1 = "Bloglar";
             ViewBag.v2 = "Blog Detayı ve Yorumlar";
 
+            ViewBag.BlogId = id;
 
             return View();
         }
