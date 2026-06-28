@@ -20,5 +20,13 @@ namespace CarBookNetCore.WebUi.Controllers
         {
             return PartialView();
         }
+        public PartialViewResult AdminFooterPartial()
+        {
+            return PartialView();
+        }
+        public PartialViewResult AdminScriptPartial()
+        {
+            return PartialView();
+        }
     }
 }

@@ -1,8 +1,71 @@
-﻿
+﻿@model List<ResultCarWithBrandDto>
+
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/AdminLayout/Index.cshtml";
+    int count = 0;
 }
 
-<h1>Index</h1>
+<div class="page-content">
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Araç Listesi</h4>
+                        <p class="card-subtitle mb-4">
+                            Araçlar ile ilgili Ekleme,Silme,Güncelleme işlemleri bu ekrandan gerçekleştirebilirsiniz.
+                            <code>&lt;table&gt;</code>.
+                        </p>
+                        <br />
+                        <td><a href="/AdminCar/CreateCar/" class="btn btn-outline-success">Araç Ekle</a></td>
+                        <br />
+                        <br />
+                        <div class="table-responsive">
+                            <table class="table mb-0">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Marka</th>
+                                        <th>Model</th>
+                                        <th>Vites Türü</th>
+                                        <th>Km</th>
+                                        <th>Sil</th>
+                                        <th>Güncelle</th>
+                                        <th>Detaylar</th>
+                                        <th>Sitede Gör</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var x in Model)
+                                    {
+                                        count++;
+                                        <tr>
+                                            <td>@count</td>
+                                            <td>@x.BrandName</td>
+                                            <td>@x.Model</td>
+                                            <td>@x.Transmission</td>
+                                            <td>@x.Km</td>
+                                            <td><a href="/AdminCar/DeleteCar/@x.CarId" class="btn btn-outline-danger">Sil</a></td>
+                                            <td><a href="/AdminCar/UpdateCar/@x.CarId" class="btn btn-outline-primary">Güncelle</a></td>
+                                            <td><a href="/AdminCar/DetailsCar/@x.CarId" class="btn btn-outline-primary">Detaylar</a></td>
+                                            <td><a href="/AdminCar/DetailsCar/@x.CarId" class="btn btn-outline-warning">Sitede Gör</a></td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                    <!-- end card-body-->
+                </div>
+                <!-- end card -->
+
+            </div>
+           
+        </div>
+
+    </div> <!-- container-fluid -->
+</div>
 

@@ -1,0 +1,172 @@
+﻿@model CreateCarDto
+@{
+    ViewData["Title"] = "Yeni Araç Ekle";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="page-content">
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-12">
+                <div class="page-title-box d-flex align-items-center justify-content-between">
+                    <h4 class="mb-0 font-size-18">Araç Yönetimi</h4>
+                    <div class="page-title-right">
+                        <ol class="breadcrumb m-0">
+                            <li class="breadcrumb-item"><a href="javascript: void(0);">Araçlar</a></li>
+                            <li class="breadcrumb-item active">Yeni Araç Ekle</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card shadow-sm border-0 rounded-lg">
+                    <div class="card-body p-4">
+
+                        <div class="mb-4">
+                            <h5 class="card-title mb-1 text-primary fw-bold"><i class="mdi mdi-car-plus mr-2"></i>Yeni Araç Giriş Formu</h5>
+                            <p class="text-muted font-size-13">Sisteme yeni bir kiralık araç eklemek için lütfen teknik, kapasite ve görsel bilgilerini doldurunuz.</p>
+                        </div>
+
+                        <form method="post">
+
+                            <div class="form-section-title">1. Temel Model Bilgileri</div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label-custom">Araç Markası</label>
+                                        <select class="form-control form-control-custom"
+                                                asp-for="BrandId"
+                                                asp-items="ViewBag.BrandValues"
+                                                required>
+                                            <option value="" selected disabled>Marka Seçiniz...</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label-custom">Model Adı</label>
+                                        <input type="text" class="form-control form-control-custom" asp-for="Model" placeholder="Örn: Egea Sedan, Clio" required />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-section-title mt-3">2. Teknik & Kapasite Detayları</div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label class="form-label-custom">Kilometre (Km)</label>
+                                        <input type="number" class="form-control form-control-custom" asp-for="Km" placeholder="Örn: 24500" required />
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label class="form-label-custom">Vites / Şanzıman</label>
+                                        <select class="form-control form-control-custom" asp-for="Transmission" required>
+                                            <option value="" selected disabled>Seçiniz...</option>
+                                            <option value="Manuel">Manuel</option>
+                                            <option value="Otomatik">Otomatik</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label class="form-label-custom">Koltuk Sayısı (Yolcu)</label>
+                                        <input type="number" class="form-control form-control-custom" asp-for="Seat" placeholder="Örn: 5" min="1" max="20" required />
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label class="form-label-custom">Bagaj Kapasitesi (Koli/Adet)</label>
+                                        <input type="number" class="form-control form-control-custom" asp-for="Luggage" placeholder="Örn: 3" min="0" required />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-section-title mt-3">3. Yakıt & Görsel Parametreleri</div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label class="form-label-custom">Yakıt Türü</label>
+                                        <select class="form-control form-control-custom" asp-for="Fuel" required>
+                                            <option value="" selected disabled>Seçiniz...</option>
+                                            <option value="Dizel">Dizel</option>
+                                            <option value="Benzin">Benzin</option>
+                                            <option value="Hibrit">Hibrit</option>
+                                            <option value="Elektrik">Elektrik</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label class="form-label-custom">Kapak Görseli URL</label>
+                                        <input type="text" class="form-control form-control-custom" asp-for="CoverImage" placeholder="/images/car-cover.jpg" required />
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label class="form-label-custom">Büyük Görsel URL</label>
+                                        <input type="text" class="form-control form-control-custom" asp-for="BigImageUrl" placeholder="/images/car-big.jpg" required />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="d-flex justify-content-end gap-2 border-top pt-4 mt-4">
+                                <a href="/Admin/Car/Index" class="btn btn-light waves-effect px-4 mr-2">Vazgeç</a>
+                                <button type="submit" class="btn btn-primary waves-effect waves-light px-5">
+                                    <i class="mdi mdi-content-save mr-1"></i> Aracı Sisteme Kaydet
+                                </button>
+                            </div>
+
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<style>
+    .form-section-title {
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        font-weight: 700;
+        color: #74788d;
+        margin-bottom: 15px;
+        border-bottom: 1px dashed #eff2f7;
+        padding-bottom: 5px;
+    }
+
+    .form-label-custom {
+        font-weight: 600;
+        color: #495057;
+        font-size: 13px;
+        margin-bottom: 8px;
+    }
+
+    .form-control-custom {
+        border: 1.5px solid #ced4da !important;
+        border-radius: 6px !important;
+        height: auto !important;
+        padding: 0.6rem 0.75rem !important;
+        font-size: 13px !important;
+        transition: all 0.2s ease-in-out;
+    }
+
+        .form-control-custom:focus {
+            border-color: #501bf2 !important; /* Temanın kurumsal mor tonu */
+            box-shadow: 0 0 0 3px rgba(80, 27, 242, 0.1) !important;
+            background-color: #fff;
+        }
+
+    .card {
+        background-color: #ffffff;
+        border: none;
+    }
+</style>
