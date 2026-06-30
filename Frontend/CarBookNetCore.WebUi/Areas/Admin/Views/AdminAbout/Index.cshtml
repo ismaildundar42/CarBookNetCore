@@ -1,0 +1,67 @@
+﻿@model List<ResultAboutDto>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+    int count = 0;
+}
+
+<div class="page-content">
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="Aboutd">
+                    <div class="Aboutd-body">
+                        <h4 class="Aboutd-title">Hakkımda Listesi</h4>
+                        <p class="Aboutd-subtitle mb-4">
+                            Hakkımda ile ilgili Ekleme,Silme,Güncelleme işlemleri bu ekrandan gerçekleştirebilirsiniz.
+                            <code>&lt;table&gt;</code>.
+                        </p>
+                        <br />
+                        <td><a href="/Admin/AdminAbout/CreateAbout/" class="btn btn-outline-success">Hakkımda Bilgisi Ekle</a></td>
+                        <br />
+                        <br />
+                        <div class="table-responsive">
+                            <table class="table mb-0">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Başlık</th>
+                                        <th>Açıklama</th>
+                                        <th>Image Url</th>
+                                        <th>Sil</th>
+                                        <th>Güncelle</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var x in Model)
+                                    {
+                                        count++;
+                                        <tr>
+                                            <td>@count</td>
+                                            <td>@x.title</td>
+                                            <td>@x.description</td>
+                                            <td>@x.imageUrl</td>
+                                            <td><a href="/Admin/AdminAbout/DeleteAbout/@x.aboutId" class="btn btn-outline-danger">Sil</a></td>
+                                            <td><a href="/Admin/AdminAbout/UpdateAbout/@x.aboutId" class="btn btn-outline-primary">Güncelle</a></td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                    <!-- end Aboutd-body-->
+                </div>
+                <!-- end Aboutd -->
+
+            </div>
+
+        </div>
+
+    </div> <!-- container-fluid -->
+</div>
+
+
+

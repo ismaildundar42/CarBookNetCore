@@ -32,7 +32,7 @@ namespace CarBookNetCore.WebApi.Controllers
             var value = await _getAboutQueryCommandHandler.Handle();
             return Ok(value);
         }
-        [HttpGet("id")]
+        [HttpGet("{id}")]
         public async Task<IActionResult> GetAbout(int id)
         {
             var value = await _getAboutByIdQueryHandler.Handle(new GetAboutByIdQuery(id));
@@ -44,7 +44,7 @@ namespace CarBookNetCore.WebApi.Controllers
             await _createAboutCommandHandler.Handle(command);
             return Ok("Hakkımda bilgisi başarılı bir şekilde eklendi!");
         }
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteAbout(int id)
         {
             await _removeAboutCommandHandler.Handle(new RemoveAboutCommand(id));

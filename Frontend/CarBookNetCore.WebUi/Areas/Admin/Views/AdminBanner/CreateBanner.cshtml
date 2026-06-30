@@ -1,0 +1,45 @@
+﻿@model CreateBannerDto
+@{
+    ViewData["Title"] = "CreateBanner";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="page-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Yeni Banner Girişi</h4>
+                        <p class="card-subtitle mb-4">Banner bilgileri aşadağıki kutucağa girebilirsiniz. Veri girişinden sonra kaydet butonuna tıklayarak işlemi tamamlayabilirsiniz.</p>
+                        <form method="post">
+
+                            <div class="form-group">
+                                <label for="exampleInputName">Başlık Bilgisi</label>
+                                <input type="text" class="form-control" id="exampleInputName1" asp-for="Title" placeholder="Başlık Girişi Yapınız">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="exampleInputName">Açıklama Bilgisi</label>
+                                <textarea class="form-control" asp-for="Description" placeholder="Açıklama Bilgisi Giriniz" rows="3"></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="exampleInputName">Video Açıklama Bilgisi</label>
+                                <textarea class="form-control" asp-for="VideoDescription" placeholder="Video Açıklama Bilgisi Giriniz" rows="3"></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="exampleInputName">Video Url Giriniz</label>
+                                <input type="text" class="form-control" id="exampleInputName2" asp-for="VideoUrl" placeholder="Video Url Bilgisi Girişi Yapınız">
+                            </div>
+
+                            <button type="submit" class="btn btn-primary waves-effect waves-light">Banner Bilgisi Kaydet</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

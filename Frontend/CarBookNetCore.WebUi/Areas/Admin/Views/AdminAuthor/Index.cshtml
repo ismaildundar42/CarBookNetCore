@@ -1,0 +1,67 @@
+﻿@model List<ResultAuthorDto>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+    int count = 0;
+}
+
+<div class="page-content">
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="Authord">
+                    <div class="Authord-body">
+                        <h4 class="Authord-title">Yazar Listesi</h4>
+                        <p class="Authord-subtitle mb-4">
+                            Yazarlar ile ilgili Ekleme,Silme,Güncelleme işlemleri bu ekrandan gerçekleştirebilirsiniz.
+                            <code>&lt;table&gt;</code>.
+                        </p>
+                        <br />
+                        <td><a href="/Admin/AdminAuthor/CreateAuthor/" class="btn btn-outline-success">Yazar Ekle</a></td>
+                        <br />
+                        <br />
+                        <div class="table-responsive">
+                            <table class="table mb-0">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Ad Soyad</th>
+                                        <th>Description</th>
+                                        <th>Sil</th>
+                                        <th>Güncelle</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var x in Model)
+                                    {
+                                        count++;
+                                        <tr>
+                                            <td>@count</td>
+                                            <td><img src="@x.ImageUrl" width="50" height="50" style="margin-right:10px" @x.Name/></td>
+                                            <td>@x.Description</td>
+                                            <td><a href="/Admin/AdminAuthor/DeleteAuthor/@x.AuthorId" class="btn btn-outline-danger">Sil</a></td>
+                                            <td><a href="/Admin/AdminAuthor/UpdateAuthor/@x.AuthorId" class="btn btn-outline-primary">Güncelle</a></td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                    <!-- end Authord-body-->
+                </div>
+                <!-- end Authord -->
+
+            </div>
+
+        </div>
+
+    </div> <!-- container-fluid -->
+</div>
+
+
+
+
+

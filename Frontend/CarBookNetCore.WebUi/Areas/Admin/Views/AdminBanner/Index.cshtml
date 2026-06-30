@@ -1,0 +1,67 @@
+﻿@model List<ResultBannerDto>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+    int count = 0;
+}
+
+<div class="page-content">
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="Bannerd">
+                    <div class="Bannerd-body">
+                        <h4 class="Bannerd-title">Marka Listesi</h4>
+                        <p class="Bannerd-subtitle mb-4">
+                            Banner'la ilgili Ekleme,Silme,Güncelleme işlemleri bu ekrandan gerçekleştirebilirsiniz.
+                            <code>&lt;table&gt;</code>.
+                        </p>
+                        <br />
+                        <td><a href="/Admin/AdminBanner/CreateBanner/" class="btn btn-outline-success">Banner Ekle</a></td>
+                        <br />
+                        <br />
+                        <div class="table-responsive">
+                            <table class="table mb-0">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Başlık</th>
+                                        <th>Açıklama</th>
+                                        <th>Video Açıklama</th>
+                                        <th>Video Url</th>
+                                        <th>Sil</th>
+                                        <th>Güncelle</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var x in Model)
+                                    {
+                                        count++;
+                                        <tr>
+                                            <td>@count</td>
+                                            <td>@x.Title</td>
+                                            <td>@x.Description</td>
+                                            <td>@x.VideoDescription</td>
+                                            <td>@x.VideoUrl</td>
+                                            <td><a href="/Admin/AdminBanner/DeleteBanner/@x.BannerId" class="btn btn-outline-danger">Sil</a></td>
+                                            <td><a href="/Admin/AdminBanner/UpdateBanner/@x.BannerId" class="btn btn-outline-primary">Güncelle</a></td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                    <!-- end Bannerd-body-->
+                </div>
+                <!-- end Bannerd -->
+
+            </div>
+
+        </div>
+
+    </div> <!-- container-fluid -->
+</div>
+

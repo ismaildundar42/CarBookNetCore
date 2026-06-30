@@ -1,0 +1,67 @@
+﻿@model List<ResultCategoryDto>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+    int count = 0;
+}
+
+<div class="page-content">
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="Categoryd">
+                    <div class="Categoryd-body">
+                        <h4 class="Categoryd-title">Kategori Listesi</h4>
+                        <p class="Categoryd-subtitle mb-4">
+                            Kategoriler ile ilgili Ekleme,Silme,Güncelleme işlemleri bu ekrandan gerçekleştirebilirsiniz.
+                            <code>&lt;table&gt;</code>.
+                        </p>
+                        <br />
+                        <td><a href="/Admin/AdminCategory/CreateCategory/" class="btn btn-outline-success">Kategori Ekle</a></td>
+                        <br />
+                        <br />
+                        <div class="table-responsive">
+                            <table class="table mb-0">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Ad</th>
+                                        <th>Sil</th>
+                                        <th>Güncelle</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var x in Model)
+                                    {
+                                        count++;
+                                        <tr>
+                                            <td>@count</td>
+                                            <td>@x.name</td>
+                                            <td><a href="/Admin/AdminCategory/DeleteCategory/@x.categoryId" class="btn btn-outline-danger">Sil</a></td>
+                                            <td><a href="/Admin/AdminCategory/UpdateCategory/@x.categoryId" class="btn btn-outline-primary">Güncelle</a></td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                    <!-- end Categoryd-body-->
+                </div>
+                <!-- end Categoryd -->
+
+            </div>
+
+        </div>
+
+    </div> <!-- container-fluid -->
+</div>
+
+
+
+
+
+
+
