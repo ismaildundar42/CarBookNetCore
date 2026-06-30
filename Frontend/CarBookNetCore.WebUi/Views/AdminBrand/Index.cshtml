@@ -1,0 +1,61 @@
+﻿@model List<ResultBrandDto>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+    int count = 0;
+}
+
+<div class="page-content">
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="Brandd">
+                    <div class="Brandd-body">
+                        <h4 class="Brandd-title">Marka Listesi</h4>
+                        <p class="Brandd-subtitle mb-4">
+                            Markalarla ilgili Ekleme,Silme,Güncelleme işlemleri bu ekrandan gerçekleştirebilirsiniz.
+                            <code>&lt;table&gt;</code>.
+                        </p>
+                        <br />
+                        <td><a href="/AdminBrand/CreateBrand/" class="btn btn-outline-success">Marka Ekle</a></td>
+                        <br />
+                        <br />
+                        <div class="table-responsive">
+                            <table class="table mb-0">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Marka</th>
+                                        <th>Sil</th>
+                                        <th>Güncelle</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var x in Model)
+                                    {
+                                        count++;
+                                        <tr>
+                                            <td>@count</td>
+                                            <td>@x.name</td>
+                                            <td><a href="/AdminBrand/DeleteBrand/@x.brandId" class="btn btn-outline-danger">Sil</a></td>
+                                            <td><a href="/AdminBrand/UpdateBrand/@x.brandId" class="btn btn-outline-primary">Güncelle</a></td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                    <!-- end Brandd-body-->
+                </div>
+                <!-- end Brandd -->
+
+            </div>
+
+        </div>
+
+    </div> <!-- container-fluid -->
+</div>
+

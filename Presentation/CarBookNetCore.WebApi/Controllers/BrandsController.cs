@@ -43,7 +43,7 @@ namespace CarBookNetCore.WebApi.Controllers
             await _createBrandCommandHandler.Handle(command);
             return Ok("Brand bilgisi başarılı bir şekilde eklendi!");
         }
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> RemoveBrand(int id)
         {
             await _removeBrandCommandHandler.Handle(new RemoveBrandCommand(id));
