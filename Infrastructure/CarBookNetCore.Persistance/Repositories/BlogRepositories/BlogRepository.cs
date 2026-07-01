@@ -1,4 +1,4 @@
-﻿using CarBookNetCore.Application.Features.Interfaces.BlogInterfaces;
+using CarBookNetCore.Application.Features.Interfaces.BlogInterfaces;
 using CarBookNetCore.Domain.Entities;
 using CarBookNetCore.Persistence.Context;
 using Microsoft.EntityFrameworkCore;
@@ -21,7 +21,10 @@ namespace CarBookNetCore.Persistence.Repositories.BlogRepositories
 
         public List<Blog> GetAllBlogsWithAuthor()
         {
-            var values = _context.Blogs.Include(x => x.Author).ToList();
+            var values = _context.Blogs
+                .Include(x => x.Author)
+                .Include(x => x.Category)
+                .ToList();
             return values;
         }
 

@@ -1,6 +1,7 @@
-﻿using CarBookNetCore.Application.Features.RepositoryPattern;
+using CarBookNetCore.Application.Features.RepositoryPattern;
 using CarBookNetCore.Domain.Entities;
 using CarBookNetCore.Persistence.Context;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -43,7 +44,10 @@ namespace CarBookNetCore.Persistence.Repositories.CommentRepositories
 
         public List<Comment> GetCommentsByBlogId(int id)
         {
-            return _context.Set<Comment>().Where(x => x.BlogId == id).ToList();
+            return _context.Set<Comment>()
+                .Include(x => x.Blog)
+                .Where(x => x.BlogId == id)
+                .ToList();
         }
 
         public void Remove(Comment entity)

@@ -1,4 +1,4 @@
-﻿using CarBookNetCore.Application.Features.Interfaces;
+using CarBookNetCore.Application.Features.Interfaces;
 using CarBookNetCore.Application.Features.Interfaces.BlogInterfaces;
 using CarBookNetCore.Application.Features.Mediator.Queries.BlogQueries;
 using CarBookNetCore.Application.Features.Mediator.Results.BlogResults;
@@ -27,12 +27,13 @@ namespace CarBookNetCore.Application.Features.Mediator.Handlers.BlogHandlers
             {
                 AuthorId = x.AuthorId,
                 AuthorName = x.Author.Name,
-                 BlogId = x.BlogId,
-                 CategoryId = x.CategoryId,
-                 CoverImageUrl = x.CoverImageUrl,
-                 CreatedDate = x.CreatedDate,
-                 Title = x.Title,
-                 Description = x.Description
+                BlogId = x.BlogId,
+                CategoryId = x.CategoryId,
+                CategoryName = x.Category != null ? x.Category.Name : string.Empty,
+                CoverImageUrl = x.CoverImageUrl,
+                CreatedDate = x.CreatedDate,
+                Title = x.Title,
+                Description = x.Description
             }).ToList();
         }
     }

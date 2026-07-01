@@ -1,4 +1,4 @@
-﻿using CarBookNetCore.Dtos.BlogDtos;
+using CarBookNetCore.Dtos.BlogDtos;
 using CarBookNetCore.Dtos.CommentDtos;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
@@ -25,8 +25,12 @@ namespace CarBookNetCore.WebUi.Areas.Admin.Controllers
             {
                 var jsonData = await responseMessage.Content.ReadAsStringAsync();
                 var values = JsonConvert.DeserializeObject<List<ResultCommentDto>>(jsonData);
+                ViewBag.blogTitle = values != null && values.Count > 0
+                    ? values[0].BlogTitle
+                    : "Blog";
                 return View(values);
             }
+            ViewBag.blogTitle = "Blog";
             return View();
         }
     }

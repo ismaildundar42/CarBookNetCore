@@ -1,4 +1,4 @@
-﻿@model List<ResultAllBlogsWithAuthorDto>
+@model List<ResultAllBlogsWithAuthorDto>
 
 @{
     ViewData["Title"] = "Index";
@@ -41,7 +41,7 @@
                                             <td>@count</td>
                                             <td>@x.Title</td>
                                             <td>@x.AuthorName</td>
-                                            <td>@x.CategoryId</td>
+                                            <td>@x.CategoryName</td>
                                             <td>@x.CreatedDate</td>
                                             <td><a href="/Admin/AdminBlog/DeleteBlog/@x.BlogId" class="btn btn-outline-danger btn-sm waves-effect" title="Sil"><i class="mdi mdi-trash-can-outline"></i></a></td>
 
