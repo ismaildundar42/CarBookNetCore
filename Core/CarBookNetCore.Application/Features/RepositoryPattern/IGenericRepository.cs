@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CarBookNetCore.Domain.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,6 +14,6 @@ namespace CarBookNetCore.Application.Features.RepositoryPattern
         void Update(T entity);
         void Remove(T entity);
         T GetById(int id);
-
+        List<T> GetCommentsByBlogId(int id);
     }
 }

@@ -1,0 +1,72 @@
+﻿@model List<ResultAllBlogsWithAuthorDto>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+    int count = 0;
+}
+
+<div class="page-content">
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="Blogd">
+                    <div class="Blogd-body">
+                        <h4 class="Blogd-title">Bloglar Listesi</h4>
+                        <p class="Blogd-subtitle mb-4">
+                            Bloglar ile ilgili Ekleme,Silme,Güncelleme işlemleri bu ekrandan gerçekleştirebilirsiniz.
+                            <code>&lt;table&gt;</code>.
+                        </p>
+                        <br />
+                        <div class="table-responsive">
+                            <table class="table mb-0">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Başlık</th>
+                                        <th>Yazar</th>
+                                        <th>Kategori</th>
+                                        <th>Tarih</th>
+                                        <th>Sil</th>
+                                        <th>Blogu Görüntüle</th>
+                                        <th>Yorumları Gör</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var x in Model)
+                                    {
+                                        count++;
+                                        <tr>
+                                            <td>@count</td>
+                                            <td>@x.Title</td>
+                                            <td>@x.AuthorName</td>
+                                            <td>@x.CategoryId</td>
+                                            <td>@x.CreatedDate</td>
+                                            <td><a href="/Admin/AdminBlog/DeleteBlog/@x.BlogId" class="btn btn-outline-danger btn-sm waves-effect" title="Sil"><i class="mdi mdi-trash-can-outline"></i></a></td>
+
+                                            <td><a href="/Blog/BlogDetail/@x.BlogId" class="btn btn-outline-success btn-sm waves-effect" title="Blogu Görüntüle"><i class="mdi mdi-eye-outline"></i></a></td>
+
+                                            <td><a href="/Admin/AdminComment/Index/@x.BlogId" class="btn btn-outline-warning text-dark btn-sm waves-effect" title="Yorumları Gör"><i class="mdi mdi-comment-multiple-outline"></i></a></td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                    <!-- end Blogd-body-->
+                </div>
+                <!-- end Blogd -->
+
+            </div>
+
+        </div>
+
+    </div> <!-- container-fluid -->
+</div>
+
+
+
+
+
