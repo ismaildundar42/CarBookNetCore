@@ -22,7 +22,7 @@ namespace CarBookNetCore.WebApi.Controllers
             var values = await _mediator.Send(new GetServiceQuery());
             return Ok(values);
         }
-        [HttpGet("id")]
+        [HttpGet("{id}")]
         public async Task<IActionResult> GetService(int id)
         {
             var values = await _mediator.Send(new GetServiceByIdQuery(id));
@@ -34,7 +34,7 @@ namespace CarBookNetCore.WebApi.Controllers
             await _mediator.Send(command);
             return Ok("Service başarılı bir şekilde eklenmiştir!");
         }
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> RemoveService(int id)
         {
             await _mediator.Send(new RemoveServiceCommand(id));

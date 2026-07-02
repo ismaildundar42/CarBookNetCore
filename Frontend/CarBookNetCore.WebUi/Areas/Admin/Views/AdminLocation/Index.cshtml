@@ -1,0 +1,66 @@
+﻿@model List<ResultLocationDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+    int count = 0;
+}
+
+<div class="page-content">
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="Locationd">
+                    <div class="Locationd-body">
+                        <h4 class="Locationd-title">Konum Listesi</h4>
+                        <p class="Locationd-subtitle mb-4">
+                            Konumlar ile ilgili Ekleme,Silme,Güncelleme işlemleri bu ekrandan gerçekleştirebilirsiniz.
+                            <code>&lt;table&gt;</code>.
+                        </p>
+                        <br />
+                        <td><a href="/Admin/AdminLocation/CreateLocation/" class="btn btn-outline-success">Konum Ekle</a></td>
+                        <br />
+                        <br />
+                        <div class="table-responsive">
+                            <table class="table mb-0">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Konum</th>
+                                        <th>Sil</th>
+                                        <th>Güncelle</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var x in Model)
+                                    {
+                                        count++;
+                                        <tr>
+                                            <td>@count</td>
+                                            <td>@x.Name</td>
+                                            <td><a href="/Admin/AdminLocation/DeleteLocation/@x.LocationId" class="btn btn-outline-danger">Sil</a></td>
+                                            <td><a href="/Admin/AdminLocation/UpdateLocation/@x.LocationId" class="btn btn-outline-primary">Güncelle</a></td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                    <!-- end Locationd-body-->
+                </div>
+                <!-- end Locationd -->
+
+            </div>
+
+        </div>
+
+    </div> <!-- container-fluid -->
+</div>
+
+
+
+
+
+
+

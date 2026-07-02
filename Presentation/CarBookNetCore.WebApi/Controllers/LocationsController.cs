@@ -22,7 +22,7 @@ namespace CarBookNetCore.WebApi.Controllers
             var values = await _mediator.Send(new GetLocationQuery());
             return Ok(values);
         }
-        [HttpGet("id")]
+        [HttpGet("{id}")]
         public async Task<IActionResult> GetLocation(int id)
         {
             var values = await _mediator.Send(new GetLocationByIdQuery(id));
@@ -34,7 +34,7 @@ namespace CarBookNetCore.WebApi.Controllers
             await _mediator.Send(command);
             return Ok("Location başarılı bir şekilde eklenmiştir!");
         }
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> RemoveLocation(int id)
         {
             await _mediator.Send(new RemoveLocationCommand(id));

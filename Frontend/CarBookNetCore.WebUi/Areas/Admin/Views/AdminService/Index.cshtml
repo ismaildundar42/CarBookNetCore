@@ -1,0 +1,72 @@
+﻿@model List<ResultServiceDto>
+
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+    int count = 0;
+}
+
+<div class="page-content">
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="Serviced">
+                    <div class="Serviced-body">
+                        <h4 class="Serviced-title">Hizmet Listesi</h4>
+                        <p class="Serviced-subtitle mb-4">
+                            Hizmetler ile ilgili Ekleme,Silme,Güncelleme işlemleri bu ekrandan gerçekleştirebilirsiniz.
+                            <code>&lt;table&gt;</code>.
+                        </p>
+                        <br />
+                        <td><a href="/Admin/AdminService/CreateService/" class="btn btn-outline-success">Hizmet Ekle</a></td>
+                        <br />
+                        <br />
+                        <div class="table-responsive">
+                            <table class="table mb-0">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Açıklama</th>
+                                        <th>Başlık</th>
+                                        <th>Icon Url</th>
+                                        <th>Sil</th>
+                                        <th>Güncelle</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var x in Model)
+                                    {
+                                        count++;
+                                        <tr>
+                                            <td>@count</td>
+                                            <td>@x.Description</td>
+                                            <td>@x.Title</td>
+                                            <td>@x.IconUrl</td>
+                                            <td><a href="/Admin/AdminService/DeleteService/@x.ServiceId" class="btn btn-outline-danger">Sil</a></td>
+                                            <td><a href="/Admin/AdminService/UpdateService/@x.ServiceId" class="btn btn-outline-primary">Güncelle</a></td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                    <!-- end Serviced-body-->
+                </div>
+                <!-- end Serviced -->
+
+            </div>
+
+        </div>
+
+    </div> <!-- container-fluid -->
+</div>
+
+
+
+
+
+
+

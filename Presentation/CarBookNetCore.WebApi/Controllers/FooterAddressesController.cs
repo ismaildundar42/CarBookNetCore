@@ -28,13 +28,13 @@ namespace CarBookNetCore.WebApi.Controllers
             await _mediator.Send(command);
             return Ok("Footer Address bilgisi başarılı bir şekilde eklenmiştir!");
         }
-        [HttpGet("id")]
+        [HttpGet("{id}")]
         public async Task<IActionResult> GetFooterAddress(int id)
         {
             var values = await _mediator.Send(new GetFooterAddressByIdQuery(id));
             return Ok(values);
         }
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> RemoveFooterAddress(int id)
         {
             await _mediator.Send(new RemoveFooterAddressCommand(id));

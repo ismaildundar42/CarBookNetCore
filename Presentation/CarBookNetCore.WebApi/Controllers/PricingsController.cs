@@ -22,7 +22,7 @@ namespace CarBookNetCore.WebApi.Controllers
             var values = await _mediator.Send(new GetPricingQuery());
             return Ok(values);
         }
-        [HttpGet("id")]
+        [HttpGet("{id}")]
         public async Task<IActionResult> GetPricing(int id)
         {
             var values = await _mediator.Send(new GetPricingByIdQuery(id));
@@ -34,7 +34,7 @@ namespace CarBookNetCore.WebApi.Controllers
             await _mediator.Send(command);
             return Ok("Pricing başarılı bir şekilde eklenmiştir!");
         }
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> RemovePricing(int id)
         {
             await _mediator.Send(new RemovePricingCommand(id));

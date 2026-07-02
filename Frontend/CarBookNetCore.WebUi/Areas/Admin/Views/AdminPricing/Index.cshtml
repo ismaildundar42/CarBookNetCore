@@ -1,0 +1,65 @@
+﻿@model List<ResultPricingDto>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+    int count = 0;
+}
+
+<div class="page-content">
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="Pricingd">
+                    <div class="Pricingd-body">
+                        <h4 class="Pricingd-title">Ödeme Türleri Listesi</h4>
+                        <p class="Pricingd-subtitle mb-4">
+                            Ödeme Türleri ile ilgili Ekleme,Silme,Güncelleme işlemleri bu ekrandan gerçekleştirebilirsiniz.
+                            <code>&lt;table&gt;</code>.
+                        </p>
+                        <br />
+                        <td><a href="/Admin/AdminPricing/CreatePricing/" class="btn btn-outline-success">Ödeme Türü Ekle</a></td>
+                        <br />
+                        <br />
+                        <div class="table-responsive">
+                            <table class="table mb-0">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Başlık</th>
+                                        <th>Sil</th>
+                                        <th>Güncelle</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var x in Model)
+                                    {
+                                        count++;
+                                        <tr>
+                                            <td>@count</td>
+                                            <td>@x.Name</td>
+                                            <td><a href="/Admin/AdminPricing/DeletePricing/@x.PricingId" class="btn btn-outline-danger">Sil</a></td>
+                                            <td><a href="/Admin/AdminPricing/UpdatePricing/@x.PricingId" class="btn btn-outline-primary">Güncelle</a></td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                    <!-- end Pricingd-body-->
+                </div>
+                <!-- end Pricingd -->
+
+            </div>
+
+        </div>
+
+    </div> <!-- container-fluid -->
+</div>
+
+
+
+
+

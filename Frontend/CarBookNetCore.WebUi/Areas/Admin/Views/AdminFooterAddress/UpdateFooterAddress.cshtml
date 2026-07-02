@@ -1,0 +1,56 @@
+﻿@model UpdateFooterAddressDto
+@{
+    ViewData["Title"] = "UpdateFooterAddress";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+
+<div class="page-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Yeni Yazar Girişi</h4>
+                        <p class="card-subtitle mb-4">Footer Address bilgileri aşadağıki kutucağa girebilirsiniz. Veri girişinden sonra kaydet butonuna tıklayarak işlemi tamamlayabilirsiniz.</p>
+                        <form method="post">
+
+                            <div class="form-group">
+
+                                <input type="hidden" asp-for="FooterAddressId" />
+
+                                <label for="exampleInputName">Açıklama Bilgisi</label>
+                                <textarea class="form-control" asp-for="Description" placeholder="Açıklama Bilgisi Giriniz" rows="3"></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="exampleInputName">Adres Bilgisi</label>
+                                <input type="text" class="form-control" id="exampleInputName1" asp-for="Address" placeholder="Adres Bilgisi Girişi Yapınız">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="exampleInputName">Telefon Bilgisi</label>
+                                <input type="text" class="form-control" id="exampleInputName1" asp-for="Phone" placeholder="Telefon Bilgisi Girişi Yapınız">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="exampleInputName">Email Bilgisi</label>
+                                <input type="text" class="form-control" id="exampleInputName1" asp-for="Email" placeholder="Email Bilgisi Girişi Yapınız">
+                            </div>
+
+                            <button type="submit" class="btn btn-primary waves-effect waves-light">Footer Address Bilgisi Güncelle</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+

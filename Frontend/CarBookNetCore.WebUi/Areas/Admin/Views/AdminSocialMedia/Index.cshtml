@@ -1,0 +1,71 @@
+﻿@model List<ResultSocialMediaDto>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+    int count = 0;
+}
+
+<div class="page-content">
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="SocialMediad">
+                    <div class="SocialMediad-body">
+                        <h4 class="SocialMediad-title">Yazar Listesi</h4>
+                        <p class="SocialMediad-subtitle mb-4">
+                            Sosyal Medya ile ilgili Ekleme,Silme,Güncelleme işlemleri bu ekrandan gerçekleştirebilirsiniz.
+                            <code>&lt;table&gt;</code>.
+                        </p>
+                        <br />
+                        <td><a href="/Admin/AdminSocialMedia/CreateSocialMedia/" class="btn btn-outline-success">Sosyal Medya Ekle</a></td>
+                        <br />
+                        <br />
+                        <div class="table-responsive">
+                            <table class="table mb-0">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Sosyal Medya</th>
+                                        <th>Url</th>
+                                        <th>Icon</th>
+                                        <th>Sil</th>
+                                        <th>Güncelle</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var x in Model)
+                                    {
+                                        count++;
+                                        <tr>
+                                            <td>@count</td>
+                                            <td>@x.Name</td>
+                                            <td>@x.Url</td>
+                                            <td>@x.Icon</td>
+                                            <td><a href="/Admin/AdminSocialMedia/DeleteSocialMedia/@x.SocialMediaId" class="btn btn-outline-danger">Sil</a></td>
+                                            <td><a href="/Admin/AdminSocialMedia/UpdateSocialMedia/@x.SocialMediaId" class="btn btn-outline-primary">Güncelle</a></td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                    <!-- end SocialMediad-body-->
+                </div>
+                <!-- end SocialMediad -->
+
+            </div>
+
+        </div>
+
+    </div> <!-- container-fluid -->
+</div>
+
+
+
+
+
+
+
