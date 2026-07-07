@@ -1,6 +1,8 @@
 ﻿using CarBookNetCore.Application.Features.CQRS.Commands.CarCommands;
 using CarBookNetCore.Application.Features.CQRS.Handlers.CarHandlers;
 using CarBookNetCore.Application.Features.CQRS.Queries.CarQueries;
+using CarBookNetCore.Application.Features.Mediator.Queries.StatisticsQueries;
+using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -17,8 +19,9 @@ namespace CarBookNetCore.WebApi.Controllers
         private readonly UpdateCarCommandHandler _updateCarCommandHandler;
         private readonly GetCarWithBrandQueryHandler _getCarWithBrandQueryHandler;
         private readonly GetLast5CarWithBrandQueryHandler _getLast5CarWithBrandQueryHandler;
+        private readonly IMediator _mediator;
 
-        public CarsController(CreateCarCommandHandler createCarCommandHandler, GetCarByIdQueryHandler getCarByIdQueryHandler, GetCarQueryHandler getCarQueryHandler, RemoveCarCommandHandler removeCarCommandHandler, UpdateCarCommandHandler updateCarCommandHandler, GetCarWithBrandQueryHandler getCarWithBrandQueryHandler, GetLast5CarWithBrandQueryHandler getLast5CarWithBrandQueryHandler)
+        public CarsController(CreateCarCommandHandler createCarCommandHandler, GetCarByIdQueryHandler getCarByIdQueryHandler, GetCarQueryHandler getCarQueryHandler, RemoveCarCommandHandler removeCarCommandHandler, UpdateCarCommandHandler updateCarCommandHandler, GetCarWithBrandQueryHandler getCarWithBrandQueryHandler, GetLast5CarWithBrandQueryHandler getLast5CarWithBrandQueryHandler, IMediator mediator)
         {
             _createCarCommandHandler = createCarCommandHandler;
             _getCarByIdQueryHandler = getCarByIdQueryHandler;
@@ -27,6 +30,7 @@ namespace CarBookNetCore.WebApi.Controllers
             _updateCarCommandHandler = updateCarCommandHandler;
             _getCarWithBrandQueryHandler = getCarWithBrandQueryHandler;
             _getLast5CarWithBrandQueryHandler = getLast5CarWithBrandQueryHandler;
+            _mediator = mediator;
         }
 
         [HttpGet]
@@ -71,5 +75,6 @@ namespace CarBookNetCore.WebApi.Controllers
             var value = await _getLast5CarWithBrandQueryHandler.Handle();
             return Ok(value);
         }
+        
     }
 }

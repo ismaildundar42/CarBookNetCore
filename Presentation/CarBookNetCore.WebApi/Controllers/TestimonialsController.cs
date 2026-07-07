@@ -22,7 +22,7 @@ namespace CarBookNetCore.WebApi.Controllers
             var values = await _mediator.Send(new GetTestimonialQuery());
             return Ok(values);
         }
-        [HttpGet("id")]
+        [HttpGet("{id}")]
         public async Task<IActionResult> GetTestimonial(int id)
         {
             var values = await _mediator.Send(new GetTestimonialByIdQuery(id));
@@ -34,7 +34,7 @@ namespace CarBookNetCore.WebApi.Controllers
             await _mediator.Send(command);
             return Ok("Testimonial başarılı bir şekilde eklenmiştir!");
         }
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> RemoveTestimonial(int id)
         {
             await _mediator.Send(new RemoveTestimonialCommand(id));
