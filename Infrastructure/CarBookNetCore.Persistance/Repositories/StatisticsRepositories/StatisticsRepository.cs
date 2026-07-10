@@ -17,12 +17,12 @@ namespace CarBookNetCore.Persistence.Repositories.StatisticsRepositories
             _context = context;
         }
 
-        public string BlogTitleByMaxBlogComment()
+        public string GetBlogTitleByMaxBlogComment()
         {
             throw new NotImplementedException();
         }
 
-        public string BrandNameByMaxCar()
+        public string GetBrandNameByMaxCar()
         {
             var value = _context.Cars
             .GroupBy(x => new { x.BrandId, x.Brand.Name })

@@ -17,8 +17,8 @@ namespace CarBookNetCore.Application.Features.Interfaces.StatisticsInterfaces
         decimal GetAvgRentPriceForWeekly();
         decimal GetAvgRentPriceForMonthly();
         int GetCarCountByTransmissionIsAuto();
-        string BrandNameByMaxCar();
-        string BlogTitleByMaxBlogComment();
+        string GetBrandNameByMaxCar();
+        string GetBlogTitleByMaxBlogComment();
         int GetCarCountByKmSmallerThan50k();
         int GetCarCountByFuelGasolineOrDiesel();
         int GetCarCountByFuelElectric();
