@@ -19,7 +19,12 @@ namespace CarBookNetCore.Persistence.Repositories.StatisticsRepositories
 
         public string GetBlogTitleByMaxBlogComment()
         {
-            throw new NotImplementedException();
+            var value = _context.Blogs
+                       .OrderByDescending(x => x.Comments.Count())
+                       .Select(x => x.Title)
+                       .FirstOrDefault();
+
+            return value;
         }
 
         public string GetBrandNameByMaxCar()
