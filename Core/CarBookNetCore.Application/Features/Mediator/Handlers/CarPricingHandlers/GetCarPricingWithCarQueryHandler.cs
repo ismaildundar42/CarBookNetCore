@@ -27,6 +27,7 @@ namespace CarBookNetCore.Application.Features.Mediator.Handlers.CarPricingHandle
             {
                 Amount = x.Amount,
                 Brand = x.Car.Brand.Name,
+                CarId = x.CarId,
                 CarPricingId = x.CarPricingId,
                 CoverImageUrl = x.Car.CoverImage,
                 Model = x.Car.Model

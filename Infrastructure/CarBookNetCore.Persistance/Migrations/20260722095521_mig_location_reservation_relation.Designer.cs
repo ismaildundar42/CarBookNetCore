@@ -4,6 +4,7 @@ using CarBookNetCore.Persistence.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CarBookNetCore.Persistence.Migrations
 {
     [DbContext(typeof(CarbookContext))]
-    partial class CarbookContextModelSnapshot : ModelSnapshot
+    [Migration("20260722095521_mig_location_reservation_relation")]
+    partial class mig_location_reservation_relation
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -580,17 +583,11 @@ namespace CarBookNetCore.Persistence.Migrations
                     b.Property<int?>("PickUpLocationId")
                         .HasColumnType("int");
 
-                    b.Property<string>("Status")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Surname")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ReservationId");
-
-                    b.HasIndex("CarId");
 
                     b.HasIndex("DropOffLocationId");
 
@@ -830,12 +827,6 @@ namespace CarBookNetCore.Persistence.Migrations
 
             modelBuilder.Entity("CarBookNetCore.Domain.Entities.Reservation", b =>
                 {
-                    b.HasOne("CarBookNetCore.Domain.Entities.Car", "Car")
-                        .WithMany("Reservations")
-                        .HasForeignKey("CarId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("CarBookNetCore.Domain.Entities.Location", "DropOffLocation")
                         .WithMany("DropOffReservation")
                         .HasForeignKey("DropOffLocationId");
@@ -843,8 +834,6 @@ namespace CarBookNetCore.Persistence.Migrations
                     b.HasOne("CarBookNetCore.Domain.Entities.Location", "PickUpLocation")
                         .WithMany("PickUpReservation")
                         .HasForeignKey("PickUpLocationId");
-
-                    b.Navigation("Car");
 
                     b.Navigation("DropOffLocation");
 
@@ -890,8 +879,6 @@ namespace CarBookNetCore.Persistence.Migrations
                     b.Navigation("RentACarProcesses");
 
                     b.Navigation("RentACars");
-
-                    b.Navigation("Reservations");
                 });
 
             modelBuilder.Entity("CarBookNetCore.Domain.Entities.Category", b =>

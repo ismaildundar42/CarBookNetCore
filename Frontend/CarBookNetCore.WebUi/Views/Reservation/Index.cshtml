@@ -1,0 +1,109 @@
+﻿@model CreateReservationDto
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/UiLayout/Index.cshtml";
+}
+
+<!-- İnput Çerçevelerini ve Efektlerini Belirginleştiren Özel Stil -->
+<style>
+    .custom-input {
+        border: 1.5px solid #ced4da !important;
+        border-radius: 8px !important;
+        background-color: #ffffff !important;
+        transition: all 0.2s ease-in-out;
+    }
+
+        .custom-input:focus {
+            border-color: #0d6efd !important;
+            box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.15) !important;
+            background-color: #fff !important;
+        }
+</style>
+
+<div class="row justify-content-center my-5">
+    <div class="col-lg-10 col-md-12">
+        <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
+
+            <!-- Üst Başlık Alanı -->
+            <div class="bg-primary text-white p-4 text-center">
+                <h3 class="fw-bold mb-1">Araç Rezervasyon Formu</h3>
+                <p class="mb-0 text-white-50 small">Lütfen rezervasyon bilgilerinizi eksiksiz doldurunuz.</p>
+            </div>
+
+            <!-- Form Gövdesi -->
+            <div class="card-body p-4 p-md-5 bg-white">
+                <form method="post">
+
+                    <!-- Gizli Araç ID Alanı -->
+                    <input type="hidden" asp-for="CarId" value="@ViewBag.CarId">
+
+                    <!-- Ad ve Soyad -->
+                    <div class="row g-3 mb-4">
+                        <div class="col-md-6">
+                            <label asp-for="Name" class="form-label fw-bold text-dark small mb-2">Adınız</label>
+                            <input type="text" asp-for="Name" class="form-control form-control-lg custom-input" placeholder="Adınızı giriniz">
+                        </div>
+                        <div class="col-md-6">
+                            <label asp-for="Surname" class="form-label fw-bold text-dark small mb-2">Soyadınız</label>
+                            <input type="text" asp-for="Surname" class="form-control form-control-lg custom-input" placeholder="Soyadınızı giriniz">
+                        </div>
+                    </div>
+
+                    <!-- Email ve Telefon -->
+                    <div class="row g-3 mb-4">
+                        <div class="col-md-6">
+                            <label asp-for="Email" class="form-label fw-bold text-dark small mb-2">E-Mail Adresiniz</label>
+                            <input type="email" asp-for="Email" class="form-control form-control-lg custom-input" placeholder="ornek@mail.com">
+                        </div>
+                        <div class="col-md-6">
+                            <label asp-for="Phone" class="form-label fw-bold text-dark small mb-2">Telefon Numarası</label>
+                            <input type="text" asp-for="Phone" class="form-control form-control-lg custom-input" placeholder="05XX XXX XX XX">
+                        </div>
+                    </div>
+
+                    <!-- Alış ve Bırakış Lokasyonları -->
+                    <div class="row g-3 mb-4">
+                        <div class="col-md-6">
+                            <label asp-for="PickUpLocationId" class="form-label fw-bold text-dark small mb-2">Alış Lokasyonu</label>
+                            <select asp-for="PickUpLocationId" asp-items="@((List<SelectListItem>)ViewBag.Values)" class="form-select form-select-lg custom-input">
+                                <option value="">Lokasyon Seçiniz</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label asp-for="DropOffLocationId" class="form-label fw-bold text-dark small mb-2">Bırakış Lokasyonu</label>
+                            <select asp-for="DropOffLocationId" asp-items="@((List<SelectListItem>)ViewBag.Values)" class="form-select form-select-lg custom-input">
+                                <option value="">Lokasyon Seçiniz</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Yaş ve Ehliyet Yılı -->
+                    <div class="row g-3 mb-4">
+                        <div class="col-md-6">
+                            <label asp-for="Age" class="form-label fw-bold text-dark small mb-2">Yaşınız</label>
+                            <input type="number" asp-for="Age" class="form-control form-control-lg custom-input" placeholder="Yaşınız">
+                        </div>
+                        <div class="col-md-6">
+                            <label asp-for="DriverLicenseYear" class="form-label fw-bold text-dark small mb-2">Ehliyet Kullanım Yılınız</label>
+                            <input type="number" asp-for="DriverLicenseYear" class="form-control form-control-lg custom-input" placeholder="Örn: 2">
+                        </div>
+                    </div>
+
+                    <!-- Açıklama / Not -->
+                    <div class="mb-4">
+                        <label asp-for="Description" class="form-label fw-bold text-dark small mb-2">Ek Açıklama / Talepler</label>
+                        <textarea asp-for="Description" rows="4" class="form-control custom-input" placeholder="Varsa eklemek istedikleriniz..."></textarea>
+                    </div>
+
+                    <!-- Gönder Butonu -->
+                    <div class="pt-2">
+                        <button type="submit" class="btn btn-primary btn-lg px-5 py-3 fw-bold rounded-3 shadow-sm">
+                            Rezervasyonu Tamamla
+                        </button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
