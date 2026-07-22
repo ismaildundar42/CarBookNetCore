@@ -1,40 +1,155 @@
-﻿
-<section class="ftco-counter ftco-section img bg-light" id="section-counter">
-    <div class="overlay"></div>
+﻿<section class="stats-section">
     <div class="container">
-        <div class="row">
-            <div class="col-md-6 col-lg-3 justify-content-center counter-wrap ftco-animate">
-                <div class="block-18">
-                    <div class="text text-border d-flex align-items-center">
-                        <strong class="number" data-number="60">0</strong>
-                        <span>Year <br>Experienced</span>
+        <div class="row g-4">
+
+            <div class="col-12 col-sm-6 col-lg-3">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="flaticon-car"></i>
+                    </div>
+
+                    <div class="stat-content">
+                        <strong class="number"
+                                data-number="@ViewBag.CarCount">
+                            @ViewBag.CarCount
+                        </strong>
+
+                        <span>Toplam Araç</span>
                     </div>
                 </div>
             </div>
-            <div class="col-md-6 col-lg-3 justify-content-center counter-wrap ftco-animate">
-                <div class="block-18">
-                    <div class="text text-border d-flex align-items-center">
-                        <strong class="number" data-number="1090">0</strong>
-                        <span>Total <br>Cars</span>
+
+            <div class="col-12 col-sm-6 col-lg-3">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="ion-ios-pin"></i>
+                    </div>
+
+                    <div class="stat-content">
+                        <strong class="number"
+                                data-number="@ViewBag.LocationCount">
+                            @ViewBag.LocationCount
+                        </strong>
+
+                        <span>Lokasyon</span>
                     </div>
                 </div>
             </div>
-            <div class="col-md-6 col-lg-3 justify-content-center counter-wrap ftco-animate">
-                <div class="block-18">
-                    <div class="text text-border d-flex align-items-center">
-                        <strong class="number" data-number="2590">0</strong>
-                        <span>Happy <br>Customers</span>
+
+            <div class="col-12 col-sm-6 col-lg-3">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="ion-ios-pricetag"></i>
+                    </div>
+
+                    <div class="stat-content">
+                        <strong class="number"
+                                data-number="@ViewBag.BrandCount">
+                            @ViewBag.BrandCount
+                        </strong>
+
+                        <span>Toplam Marka</span>
                     </div>
                 </div>
             </div>
-            <div class="col-md-6 col-lg-3 justify-content-center counter-wrap ftco-animate">
-                <div class="block-18">
-                    <div class="text d-flex align-items-center">
-                        <strong class="number" data-number="67">0</strong>
-                        <span>Total <br>Branches</span>
+
+            <div class="col-12 col-sm-6 col-lg-3">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="ion-ios-flash"></i>
+                    </div>
+
+                    <div class="stat-content">
+                        <strong class="number"
+                                data-number="@ViewBag.ElectricCount">
+                            @ViewBag.ElectricCount
+                        </strong>
+
+                        <span>Elektrikli Araç</span>
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
 </section>
+
+                        <style>
+    .stats-section {
+        padding: 75px 0;
+        background: #f7f9fc;
+    }
+
+    .stat-card {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        min-height: 135px;
+        padding: 28px 25px;
+        background: #ffffff;
+        border: 1px solid #edf0f4;
+        border-radius: 16px;
+        box-shadow: 0 8px 30px rgba(31, 45, 61, 0.07);
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+        .stat-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 15px 40px rgba(31, 45, 61, 0.13);
+        }
+
+    .stat-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        width: 58px;
+        height: 58px;
+        border-radius: 14px;
+        background: rgba(16, 137, 255, 0.1);
+        color: #1089ff;
+        font-size: 27px;
+    }
+
+    .stat-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+        .stat-content .number {
+            display: block;
+            margin: 0;
+            color: #1089ff;
+            font-size: 38px;
+            font-weight: 700;
+            line-height: 1;
+        }
+
+        .stat-content span {
+            display: block;
+            margin-top: 9px;
+            color: #59616b;
+            font-size: 15px;
+            font-weight: 500;
+            line-height: 1.4;
+        }
+
+    @@media (max-width: 575.98px) {
+        .stats-section
+
+    {
+        padding: 50px 0;
+    }
+
+    .stat-card {
+        min-height: 115px;
+        padding: 22px;
+    }
+
+    .stat-content .number {
+        font-size: 32px;
+    }
+
+    }
+                        </style>
