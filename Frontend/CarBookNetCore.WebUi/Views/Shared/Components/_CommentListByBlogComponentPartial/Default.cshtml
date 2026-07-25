@@ -1,81 +1,20 @@
-﻿
+﻿@model List<ResultCommentDto>
+
 <ul class="comment-list">
-    <li class="comment">
-        <div class="vcard bio">
-            <img src="images/person_1.jpg" alt="Image placeholder">
-        </div>
-        <div class="comment-body">
-            <h3>John Doe</h3>
-            <div class="meta">Oct. 29, 2019 at 1:21pm</div>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
-            <p><a href="#" class="reply">Reply</a></p>
-        </div>
-    </li>
-
-    <li class="comment">
-        <div class="vcard bio">
-            <img src="images/person_1.jpg" alt="Image placeholder">
-        </div>
-        <div class="comment-body">
-            <h3>John Doe</h3>
-            <div class="meta">Oct. 29, 2019 at 1:21pm</div>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
-            <p><a href="#" class="reply">Reply</a></p>
-        </div>
-
-        <ul class="children">
-            <li class="comment">
-                <div class="vcard bio">
-                    <img src="images/person_1.jpg" alt="Image placeholder">
-                </div>
-                <div class="comment-body">
-                    <h3>John Doe</h3>
-                    <div class="meta">Oct. 29, 2019 at 1:21pm</div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
-                    <p><a href="#" class="reply">Reply</a></p>
-                </div>
-
-
-                <ul class="children">
-                    <li class="comment">
-                        <div class="vcard bio">
-                            <img src="images/person_1.jpg" alt="Image placeholder">
-                        </div>
-                        <div class="comment-body">
-                            <h3>John Doe</h3>
-                            <div class="meta">Oct. 29, 2019 at 1:21pm</div>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
-                            <p><a href="#" class="reply">Reply</a></p>
-                        </div>
-
-                        <ul class="children">
-                            <li class="comment">
-                                <div class="vcard bio">
-                                    <img src="images/person_1.jpg" alt="Image placeholder">
-                                </div>
-                                <div class="comment-body">
-                                    <h3>John Doe</h3>
-                                    <div class="meta">Oct. 29, 2019 at 1:21pm</div>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
-                                    <p><a href="#" class="reply">Reply</a></p>
-                                </div>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </li>
-        </ul>
-    </li>
-
-    <li class="comment">
-        <div class="vcard bio">
-            <img src="images/person_1.jpg" alt="Image placeholder">
-        </div>
-        <div class="comment-body">
-            <h3>John Doe</h3>
-            <div class="meta">Oct. 29, 2019 at 1:21pm</div>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
-            <p><a href="#" class="reply">Reply</a></p>
-        </div>
-    </li>
+    @foreach (var x in Model)
+    {
+        <li class="comment">
+            <div class="vcard bio">
+                <img src="https://ui-avatars.com/api/?name=@x.Name&background=0D8ABC&color=fff&size=80"
+                     alt="@x.Name">
+            </div>
+            <div class="comment-body">
+                <h3>@x.Name</h3>
+                <div class="meta">
+                    @x.CreatedDate.ToString("dd MMMM yyyy • HH:mm",
+                    new System.Globalization.CultureInfo("tr-TR"))
+            </div>                <p>@x.Description</p>
+            </div>
+        </li>
+    }
 </ul>

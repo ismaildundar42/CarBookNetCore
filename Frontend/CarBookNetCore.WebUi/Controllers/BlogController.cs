@@ -1,5 +1,6 @@
 ﻿using CarBookNetCore.Dtos.BlogDtos;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Storage.Json;
 using Newtonsoft.Json;
 using System.Threading.Tasks;
 
@@ -35,6 +36,11 @@ namespace CarBookNetCore.WebUi.Controllers
             ViewBag.v2 = "Blog Detayı ve Yorumlar";
 
             ViewBag.BlogId = id;
+
+            var client = _httpClientFactory.CreateClient();
+            var responseMessage = await client.GetAsync($"https://localhost:7187/api/Comments/GetCountCommentByBlog?id="+id);
+            var jsonData = await responseMessage.Content.ReadAsStringAsync();
+            ViewBag.CommentCount = jsonData;
 
             return View();
         }
