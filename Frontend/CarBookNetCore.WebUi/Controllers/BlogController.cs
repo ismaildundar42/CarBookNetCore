@@ -1,7 +1,9 @@
 ﻿using CarBookNetCore.Dtos.BlogDtos;
+using CarBookNetCore.Dtos.CommentDtos;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Storage.Json;
 using Newtonsoft.Json;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace CarBookNetCore.WebUi.Controllers
@@ -42,6 +44,25 @@ namespace CarBookNetCore.WebUi.Controllers
             var jsonData = await responseMessage.Content.ReadAsStringAsync();
             ViewBag.CommentCount = jsonData;
 
+            return View();
+        }
+        [HttpGet]
+        public PartialViewResult AddComment(int id)
+        {
+            ViewBag.blogId = id;
+            return PartialView();
+        }
+        [HttpPost]
+        public async Task<IActionResult> AddComment(CreateCommentDto createCommentDto)
+        {
+            var client = _httpClientFactory.CreateClient();
+            var jsonData = JsonConvert.SerializeObject(createCommentDto);
+            StringContent stringContent = new StringContent(jsonData,Encoding.UTF8,"application/json");
+            var responseMessage = await client.PostAsync("https://localhost:7187/api/Comments", stringContent);
+            if(responseMessage.IsSuccessStatusCode)
+            {
+                return RedirectToAction("Index");
+            }
             return View();
         }
     }
