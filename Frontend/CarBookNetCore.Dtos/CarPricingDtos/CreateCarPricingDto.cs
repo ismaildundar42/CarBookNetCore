@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CarBookNetCore.Dtos.PricingDtos
+namespace CarBookNetCore.Dtos.CarPricingDtos
 {
-    public class ResultPricingDto
+    public class CreateCarPricingDto
     {
+        public int CarId { get; set; }
         public int PricingId { get; set; }
-        public string Name { get; set; }
         public decimal Amount { get; set; }
     }
 }

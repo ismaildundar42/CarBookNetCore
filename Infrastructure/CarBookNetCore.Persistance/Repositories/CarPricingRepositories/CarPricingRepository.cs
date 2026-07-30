@@ -1,4 +1,4 @@
-﻿using CarBookNetCore.Application.Features.Interfaces.CarPricingInterface;
+using CarBookNetCore.Application.Features.Interfaces.CarPricingInterface;
 using CarBookNetCore.Domain.Entities;
 using CarBookNetCore.Persistence.Context;
 using Microsoft.EntityFrameworkCore;
@@ -36,6 +36,33 @@ namespace CarBookNetCore.Persistence.Repositories.CarPricingRepositories
                 .Where(x => pricingIds.Contains(x.PricingId))
                 .AsNoTracking()
                 .ToList();
+        }
+
+        public List<CarPricing> GetCarPricingByCarId(int carId)
+        {
+            return _context.CarPricings
+                .Include(x => x.Pricing)
+                .Where(x => x.CarId == carId)
+                .ToList();
+        }
+
+        public void SaveCarPricing(int carId, int pricingId, decimal amount)
+        {
+            var value = _context.CarPricings.FirstOrDefault(x => x.CarId == carId && x.PricingId == pricingId);
+            if (value != null)
+            {
+                value.Amount = amount;
+            }
+            else
+            {
+                _context.CarPricings.Add(new CarPricing
+                {
+                    CarId = carId,
+                    PricingId = pricingId,
+                    Amount = amount
+                });
+            }
+            _context.SaveChanges();
         }
     }
 }

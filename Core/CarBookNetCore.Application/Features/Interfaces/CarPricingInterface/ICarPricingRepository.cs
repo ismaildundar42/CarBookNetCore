@@ -1,4 +1,4 @@
-﻿using CarBookNetCore.Domain.Entities;
+using CarBookNetCore.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,5 +11,7 @@ namespace CarBookNetCore.Application.Features.Interfaces.CarPricingInterface
     {
         List<CarPricing> GetCarPricingWithCars();
         List<CarPricing> GetCarPricingWithTimePeriod();
+        List<CarPricing> GetCarPricingByCarId(int carId);
+        void SaveCarPricing(int carId, int pricingId, decimal amount);
     }
 }

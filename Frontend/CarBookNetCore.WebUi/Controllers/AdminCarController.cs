@@ -1,5 +1,7 @@
-﻿using CarBookNetCore.Dtos.BrandDtos;
+using CarBookNetCore.Dtos.BrandDtos;
 using CarBookNetCore.Dtos.CarDtos;
+using CarBookNetCore.Dtos.CarPricingDtos;
+using CarBookNetCore.Dtos.PricingDtos;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Newtonsoft.Json;
@@ -123,6 +125,63 @@ namespace CarBookNetCore.WebUi.Controllers
             }).ToList();
 
             return View(updateCarDto);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> CreateCarPricing(int id)
+        {
+            ViewBag.carId = id;
+            var client = _httpClientFactory.CreateClient();
+
+            var responseCarPricing = await client.GetAsync($"https://localhost:7187/api/CarPricings/GetCarPricingByCarId/{id}");
+            List<ResultCarPricingByCarIdDto> carPricingValues = new List<ResultCarPricingByCarIdDto>();
+            if (responseCarPricing.IsSuccessStatusCode)
+            {
+                var jsonCarPricing = await responseCarPricing.Content.ReadAsStringAsync();
+                carPricingValues = JsonConvert.DeserializeObject<List<ResultCarPricingByCarIdDto>>(jsonCarPricing) ?? new List<ResultCarPricingByCarIdDto>();
+            }
+
+            var responseMessage = await client.GetAsync("https://localhost:7187/api/Pricings/");
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                var jsonData = await responseMessage.Content.ReadAsStringAsync();
+                var values = JsonConvert.DeserializeObject<List<ResultPricingDto>>(jsonData);
+                if (values != null)
+                {
+                    foreach (var item in values)
+                    {
+                        var existing = carPricingValues.FirstOrDefault(x => x.PricingId == item.PricingId);
+                        if (existing != null)
+                        {
+                            item.Amount = existing.Amount;
+                        }
+                    }
+                }
+                return View(values);
+            }
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateCarPricing(List<ResultPricingDto> resultPricingDto, int carId)
+        {
+            var client = _httpClientFactory.CreateClient();
+            if (resultPricingDto != null)
+            {
+                foreach (var item in resultPricingDto)
+                {
+                    var dto = new CreateCarPricingDto
+                    {
+                        CarId = carId,
+                        PricingId = item.PricingId,
+                        Amount = item.Amount
+                    };
+                    var jsonData = JsonConvert.SerializeObject(dto);
+                    StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
+                    await client.PostAsync("https://localhost:7187/api/CarPricings", stringContent);
+                }
+            }
+            return RedirectToAction("Index");
         }
     }
 }

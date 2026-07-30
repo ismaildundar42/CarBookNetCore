@@ -1,4 +1,5 @@
-﻿using CarBookNetCore.Application.Features.Mediator.Handlers.CarPricingHandlers;
+using CarBookNetCore.Application.Features.Mediator.Commands.CarPricingCommands;
+using CarBookNetCore.Application.Features.Mediator.Handlers.CarPricingHandlers;
 using CarBookNetCore.Application.Features.Mediator.Queries.CarPricingQueries;
 using MediatR;
 using Microsoft.AspNetCore.Http;
@@ -30,6 +31,20 @@ namespace CarBookNetCore.WebApi.Controllers
             );
 
             return Ok(values);
+        }
+
+        [HttpGet("GetCarPricingByCarId/{id}")]
+        public async Task<IActionResult> GetCarPricingByCarId(int id)
+        {
+            var values = await _mediator.Send(new GetCarPricingByCarIdQuery(id));
+            return Ok(values);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateCarPricing(CreateCarPricingCommand command)
+        {
+            await _mediator.Send(command);
+            return Ok("Araç fiyatlandırması başarıyla eklendi.");
         }
     }
 }
