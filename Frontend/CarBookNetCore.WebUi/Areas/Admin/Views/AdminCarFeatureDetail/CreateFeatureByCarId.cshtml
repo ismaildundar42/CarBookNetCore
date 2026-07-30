@@ -1,0 +1,49 @@
+@model List<ResultFeatureDto>
+@{
+    ViewData["Title"] = "CreateFeatureByCarId";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="page-content">
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Araca Ait Özellik Ekleme Sayfasıdır.</h4>
+                        <p class="card-subtitle mb-4">
+                            Araca ait özellik tanımlama sayfasıdır.
+                        </p>
+                        <br />
+
+                        <form method="post">
+                            @for (int i = 0; i < Model.Count; i++)
+                            {
+                                <div class="form-check mb-2">
+                                    <input type="hidden" asp-for="@Model[i].FeatureId" />
+                                    <input type="hidden" asp-for="@Model[i].Name" />
+                                    <input type="checkbox" asp-for="@Model[i].Available" class="form-check-input" />
+                                    <label class="form-check-label" for="@Model[i].Available">
+                                        @Model[i].Name
+                                    </label>
+                                </div>
+                            }
+                            <br />
+                            <button class="btn btn-primary">
+                                Araca Özellikleri Ata
+                            </button>
+                        </form>
+
+                    </div>
+                    <!-- end card-body-->
+                </div>
+                <!-- end card -->
+
+            </div>
+
+        </div>
+
+    </div> <!-- container-fluid -->
+</div>
+

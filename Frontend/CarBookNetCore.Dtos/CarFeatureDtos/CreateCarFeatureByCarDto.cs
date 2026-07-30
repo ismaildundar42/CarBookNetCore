@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CarBookNetCore.Dtos.FeatureDtos
+namespace CarBookNetCore.Dtos.CarFeatureDtos
 {
-    public class ResultFeatureDto
+    public class CreateCarFeatureByCarDto
     {
+        public int CarId { get; set; }
         public int FeatureId { get; set; }
-        public string Name { get; set; }
         public bool Available { get; set; }
     }
 }

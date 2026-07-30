@@ -1,4 +1,4 @@
-﻿@model List<ResultCarWithBrandDto>
+@model List<ResultCarWithBrandDto>
 
 @{
     ViewData["Title"] = "Index";
@@ -34,6 +34,7 @@
                                         <th>Sil</th>
                                         <th>Güncelle</th>
                                         <th>Detaylar</th>
+                                        <th>Özellik Ata</th>
                                         <th>Sitede Gör</th>
                                         <th>Fiyat Bilgisi</th>
                                     </tr>
@@ -51,6 +52,7 @@
                                             <td><a href="/AdminCar/DeleteCar/@x.CarId" class="btn btn-outline-danger">Sil</a></td>
                                             <td><a href="/AdminCar/UpdateCar/@x.CarId" class="btn btn-outline-primary">Güncelle</a></td>
                                             <td><a href="/Admin/AdminCarFeatureDetail/Index/@x.CarId" class="btn btn-outline-primary">Detaylar</a></td>
+                                            <td><a href="/Admin/AdminCarFeatureDetail/CreateFeatureByCarId/@x.CarId" class="btn btn-outline-info">Özellik Ata</a></td>
                                             <td><a href="/AdminCar/DetailsCar/@x.CarId" class="btn btn-outline-warning">Sitede Gör</a></td>
                                             <td><a href="/AdminCar/DetailsCar/@x.CarId" class="btn btn-outline-secondary">Fiyat Bilgisi</a></td>
                                         </tr>
