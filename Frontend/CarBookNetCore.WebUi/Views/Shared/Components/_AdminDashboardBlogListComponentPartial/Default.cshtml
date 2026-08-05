@@ -1,0 +1,58 @@
+﻿@model List<ResultAllBlogsWithAuthorDto>
+
+@{
+    int count = 0;
+}
+
+<div class="col-xl-6">
+    <div class="card">
+        <div class="card-body">
+
+            <h4 class="card-title">Son Eklenen Bloglar</h4>
+            <p class="card-subtitle mb-4 font-size-13">
+                Sistemde yayınlanan en güncel blog yazıları
+            </p>
+
+            <div>
+                <div class="table-responsive">
+                    <table class="table table-centered table-hover table-xl mb-0">
+                        <thead>
+                            <tr>
+                                <th class="border-top-0">#</th>
+                                <th class="border-top-0">Blog Başlığı</th>
+                                <th class="border-top-0">Yazar</th>
+                                <th class="border-top-0 text-center">İşlem</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            @foreach (var x in Model)
+                            {
+                                count++;
+                                <tr>
+                                    <td class="text-truncate">@count</td>
+
+                                    <td class="text-truncate" style="max-width:260px;">
+                                        @x.Title
+                                    </td>
+
+                                    <td class="text-truncate">
+                                        @x.AuthorName
+                                    </td>
+
+                                    <td class="text-center">
+                                        <a href="/Blog/BlogDetail/@x.BlogId"
+                                           class="btn btn-sm btn-primary">
+                                            Aç
+                                        </a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div> <!-- end card-body-->
+    </div> <!-- end card-->
+</div> <!-- end col -->

@@ -33,7 +33,7 @@ namespace CarBookNetCore.Application.Features.Mediator.Handlers.CarPricingHandle
                 })
                 .Select(x => new GetCarPricingWithTimePeriodQueryResult
                 {
-                    CarModel = x.Key.BrandName + " " + x.Key.Model,
+                    CarModel = x.Key.Model,
                     CoverImageUrl = x.Key.CoverImage,
 
                     DailyAmount = x

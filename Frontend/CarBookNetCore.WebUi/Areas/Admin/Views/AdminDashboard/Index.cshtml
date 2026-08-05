@@ -1,0 +1,255 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<style>
+    /* Styling for statistics dashboard cards */
+    .stat-card {
+        height: 180px;
+        border: none;
+        border-radius: 16px;
+        position: relative;
+        overflow: hidden;
+        transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 1.5rem;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+
+        .stat-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+        }
+
+    /* Gradient Backgrounds */
+    .stat-card-1 {
+        background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%); /* Indigo Violet */
+    }
+
+    .stat-card-2 {
+        background: linear-gradient(135deg, #10b981 0%, #059669 100%); /* Emerald Mint */
+    }
+
+    .stat-card-3 {
+        background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); /* Sunset Amber */
+    }
+
+    .stat-card-4 {
+        background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%); /* Ocean Blue */
+    }
+
+    /* Inside Card styling */
+    .stat-card-title {
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: rgba(255, 255, 255, 0.85);
+        text-transform: uppercase;
+        letter-spacing: 0.8px;
+        line-height: 1.4;
+    }
+
+    .stat-card-value {
+        font-size: 2.2rem;
+        font-weight: 700;
+        color: #ffffff;
+        margin: 0;
+        line-height: 1.15;
+    }
+
+        .stat-card-value.text-val {
+            font-size: 1.4rem;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        .stat-card-value.long-text-val {
+            font-size: 1.15rem;
+            font-weight: 600;
+            line-height: 1.3;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+    /* Decorative subtle background icon shapes */
+    .stat-card::after {
+        content: '';
+        position: absolute;
+        width: 150px;
+        height: 150px;
+        background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0) 70%);
+        bottom: -50px;
+        right: -50px;
+        pointer-events: none;
+        border-radius: 50%;
+    }
+
+    .stat-card::before {
+        content: '';
+        position: absolute;
+        width: 90px;
+        height: 90px;
+        background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 70%);
+        top: -25px;
+        left: -25px;
+        pointer-events: none;
+        border-radius: 50%;
+    }
+</style>
+
+    <div class="page-content">
+        <div class="container-fluid">
+
+            <!-- start page title -->
+            <div class="row">
+                <div class="col-12">
+                    <div class="page-title-box d-flex align-items-center justify-content-between">
+                        <h4 class="mb-0 font-size-18">Dashboard</h4>
+                    </div>
+                </div>
+            </div>
+            <!-- end page title -->
+        @await Component.InvokeAsync("_AdminDashboardStatisticsComponentPartial")
+            <!-- end row -->
+
+            <div class="row">
+
+                <div class="col-lg-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="dropdown float-right position-relative">
+                                <a href="#" class="dropdown-toggle h4 text-muted" data-toggle="dropdown"
+                                   aria-expanded="false">
+                                    <i class="mdi mdi-dots-vertical"></i>
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-right">
+                                    <li><a href="#" class="dropdown-item">Action</a></li>
+                                    <li><a href="#" class="dropdown-item">Another action</a></li>
+                                    <li><a href="#" class="dropdown-item">Something else here</a></li>
+                                    <li class="dropdown-divider"></li>
+                                    <li><a href="#" class="dropdown-item">Separated link</a></li>
+                                </ul>
+                            </div>
+                            <h4 class="card-title d-inline-block">Statistics</h4>
+
+                            <div id="morris-bar-example" class="morris-chart" style="height: 260px;"></div>
+
+                            <div class="row text-center mt-4">
+                                <div class="col-6">
+                                    <h4>$1875.54</h4>
+                                    <p class="text-muted mb-0">Revenue</p>
+                                </div>
+                                <div class="col-6">
+                                    <h4>541</h4>
+                                    <p class="text-muted mb-0">Total Offers</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- end col -->
+
+                <div class="col-lg-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="dropdown float-right position-relative">
+                                <a href="#" class="dropdown-toggle h4 text-muted" data-toggle="dropdown"
+                                   aria-expanded="false">
+                                    <i class="mdi mdi-dots-vertical"></i>
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-right">
+                                    <li><a href="#" class="dropdown-item">Action</a></li>
+                                    <li><a href="#" class="dropdown-item">Another action</a></li>
+                                    <li><a href="#" class="dropdown-item">Something else here</a></li>
+                                    <li class="dropdown-divider"></li>
+                                    <li><a href="#" class="dropdown-item">Separated link</a></li>
+                                </ul>
+                            </div>
+                            <h4 class="card-title d-inline-block">Daily Sales</h4>
+
+                            <div id="morris-donut-example" class="morris-chart" style="height: 260px;"></div>
+
+                            <div class="row text-center mt-4">
+                                <div class="col-6">
+                                    <h4>5,459</h4>
+                                    <p class="text-muted mb-0">Total Sales</p>
+                                </div>
+                                <div class="col-6">
+                                    <h4>18</h4>
+                                    <p class="text-muted mb-0">Open Compaign</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- end col -->
+
+                <div class="col-lg-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="dropdown float-right position-relative">
+                                <a href="#" class="dropdown-toggle h4 text-muted" data-toggle="dropdown"
+                                   aria-expanded="false">
+                                    <i class="mdi mdi-dots-vertical"></i>
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-right">
+                                    <li><a href="#" class="dropdown-item">Action</a></li>
+                                    <li><a href="#" class="dropdown-item">Another action</a></li>
+                                    <li><a href="#" class="dropdown-item">Something else here</a></li>
+                                    <li class="dropdown-divider"></li>
+                                    <li><a href="#" class="dropdown-item">Separated link</a></li>
+                                </ul>
+                            </div>
+                            <h4 class="card-title d-inline-block">Total Revenue</h4>
+
+                            <div id="morris-line-example" class="morris-chart" style="height: 260px;"></div>
+
+                            <div class="row text-center mt-4">
+                                <div class="col-6">
+                                    <h4>$7841.12</h4>
+                                    <p class="text-muted mb-0">Total Revenue</p>
+                                </div>
+                                <div class="col-6">
+                                    <h4>17</h4>
+                                    <p class="text-muted mb-0">Open Compaign</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- end col -->
+            </div>
+            <!-- end row-->
+
+
+            <div class="row">
+            @await Component.InvokeAsync("_AdminDashboardCarPricingListComponentPartial")
+
+            @await Component.InvokeAsync("_AdminDashboardBlogListComponentPartial")
+            </div>
+
+        </div> <!-- container-fluid -->
+    </div>
+    <!-- End Page-content -->
+
+
+<!-- jQuery  -->
+<script src="~/Admin/vertical/assets/js/jquery.min.js"></script>
+<script src="~/Admin/vertical/assets/js/bootstrap.bundle.min.js"></script>
+<script src="~/Admin/vertical/assets/js/metismenu.min.js"></script>
+<script src="~/Admin/vertical/assets/js/waves.js"></script>
+<script src="~/Admin/vertical/assets/js/simplebar.min.js"></script>
+
+<!-- Morris Js-->
+<script src="~/Admin/plugins/morris-js/morris.min.js"></script>
+<!-- Raphael Js-->
+<script src="~/Admin/plugins/raphael/raphael.min.js"></script>
+
+<!-- Morris Custom Js-->
+<script src="~/Admin/vertical/assets/pages/dashboard-demo.js"></script>
+
+<!-- App js -->
+<script src="~/Admin/vertical/assets/js/theme.js"></script>

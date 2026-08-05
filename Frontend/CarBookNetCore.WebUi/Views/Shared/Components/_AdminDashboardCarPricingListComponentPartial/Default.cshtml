@@ -1,0 +1,45 @@
+﻿@model List<ResultCarPricingWithTimePeriodDto>
+
+@{
+    int count = 0;
+}
+
+<div class="col-xl-6">
+    <div class="card">
+        <div class="card-body">
+
+            <h4 class="card-title">Araç Fiyat Paketleri</h4>
+            <p class="card-subtitle mb-4 font-size-13">
+                Sistemde kayıtlı araçların kiralama fiyat bilgileri
+            </p>
+
+            <div class="table-responsive">
+                <table class="table table-centered table-hover table-xl mb-0" id="recent-orders">
+                    <thead>
+                        <tr>
+                            <th class="border-top-0">#</th>
+                            <th class="border-top-0">Marka Model</th>
+                            <th class="border-top-0">Günlük Fiyat</th>
+                            <th class="border-top-0">Haftalık Fiyat</th>
+                            <th class="border-top-0">Aylık Fiyat</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var x in Model)
+                        {
+                            count++;
+                            <tr>
+                                <td class="text-truncate">@count</td>
+                                <td class="text-truncate">@x.CarModel</td>
+                                <td class="text-truncate">₺ @x.DailyAmount</td>
+                                <td class="text-truncate">₺ @x.WeeklyAmount</td>
+                                <td class="text-truncate">₺ @x.MonthlyAmount</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+        </div> <!-- end card-body-->
+    </div> <!-- end card-->
+</div>
